@@ -187,7 +187,7 @@ public class PuzzleEx extends JFrame {
 
     private BufferedImage loadImage() throws IOException {
 
-        BufferedImage bimg = ImageIO.read(new File("src/resources/icesid.jpg"));
+        BufferedImage bimg = ImageIO.read(new File("/src/source_code/icesid.jpg"));
 
         return bimg;
     }
