@@ -1,0 +1,32 @@
+* {
+    -fx-font: 18px "Courier New";
+}
+
+#MainGrid {
+    -fx-background-image: url('file:src/files/start_bg.png');
+}
+
+#grid {
+    -fx-background-image: url('file:src/files/bg.png');
+}
+
+#help, #size, #custom {
+    -fx-font-weight: bold;
+    -fx-padding: 2px 0;
+}
+
+#radio1, #radio2, #radio3 {
+    -fx-padding: 2px 0;
+}
+
+#button5, #button10, #button15 {
+    -fx-width: 100px;
+}
+
+#txt1, #txt2 {
+    -fx-text-align: center;
+}
+
+#bottom-text {
+    -fx-font: 12px "Verdana";
+}
