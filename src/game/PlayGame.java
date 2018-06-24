@@ -1,21 +1,16 @@
 package game;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import static game.Menu.minObjectWidht;
 import static game.Menu.maxObjectWidht;
-import static game.Menu.minObjectHeight;
 import static game.Menu.maxObjectHeight;
 
 public class PlayGame {
@@ -57,7 +52,8 @@ public class PlayGame {
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
 
-        Color[] colors = {Color.web("0xFFFFFF"), Color.web("0xCCCCCC")};
+        //Color[] colors = {Color.web("0xFFFFFF"), Color.web("0xDDDDDD")};
+        String[] colors = {"#FFFFFF","#DDDDDD"};
 
         for(int row=0;row<x;++row) {
             for(int col=0;col<y;++col) {
@@ -68,11 +64,13 @@ public class PlayGame {
                     ClNr = 1;
                 }
 
-                Rectangle rec = new Rectangle();
-                rec.setWidth(realRecWidth);
-                rec.setHeight(realRecHeight);
-                rec.setFill(colors[ClNr]);
-                GridPane.setRowIndex(rec, col);
+                Label rec = new Label(String.valueOf(" "));
+                rec.setStyle("-fx-background-color:"+colors[ClNr]+"; -fx-font:12px 'Courier-New';");
+                rec.setPrefWidth(realRecWidth);
+                rec.setPrefHeight(realRecHeight);
+                rec.setAlignment(Pos.CENTER);
+                rec.setCursor(Cursor.HAND);
+                GridPane.setRowIndex(rec, col+1);
                 GridPane.setColumnIndex(rec, row);
                 grid.getChildren().addAll(rec);
 
@@ -93,43 +91,54 @@ public class PlayGame {
             closeText = "(X)";
         } else {
             closeSize = buttonSize;
-            closeText = "(X) close game";
+            closeText = "Close";
         }
 
-        buttonsPosition = (x - (buttonSize * 2) - closeSize) / 2;
-
-        Rectangle undo = new Rectangle();
-        undo.setWidth(realRecWidth * buttonSize);
-        undo.setHeight(maxObjectHeight);
-        undo.setFill(Color.web("0x333333"));
+        Label undo = new Label(String.valueOf("< undo"));
+        undo.setPrefWidth(realRecWidth * buttonSize);
+        undo.setPrefHeight(maxObjectHeight);
         undo.setId("gameButton1");
-        undo.setStroke(Color.web("0x666666"));
-        GridPane.setRowIndex(undo,y + 1);
-        GridPane.setColumnIndex(undo, buttonsPosition);
+        undo.setAlignment(Pos.CENTER);
+        undo.setCursor(Cursor.HAND);
+        GridPane.setRowIndex(undo,0);
+        GridPane.setColumnIndex(undo, 0);
         GridPane.setColumnSpan(undo, buttonSize);
         grid.getChildren().addAll(undo);
 
-        Rectangle redo = new Rectangle();
-        redo.setWidth(realRecWidth * buttonSize);
-        redo.setHeight(maxObjectHeight);
-        redo.setFill(Color.web("0x333333"));
-        undo.setStroke(Color.web("0x666666"));
+        Label redo = new Label(String.valueOf(" redo >"));
+        redo.setPrefWidth(realRecWidth * buttonSize);
+        redo.setPrefHeight(maxObjectHeight);
         redo.setId("gameButton2");
-        GridPane.setRowIndex(redo, y + 1);
-        GridPane.setColumnIndex(redo, buttonsPosition + buttonSize);
+        redo.setAlignment(Pos.CENTER);
+        redo.setCursor(Cursor.HAND);
+        GridPane.setRowIndex(redo, 0);
+        GridPane.setColumnIndex(redo, buttonSize);
         GridPane.setColumnSpan(redo, buttonSize);
         grid.getChildren().addAll(redo);
 
-        Rectangle stop = new Rectangle();
-        stop.setWidth(realRecWidth * closeSize);
-        stop.setHeight(maxObjectHeight);
-        stop.setFill(Color.web("0x333333"));
-        undo.setStroke(Color.web("0x666666"));
+        Label stop = new Label(String.valueOf(closeText));
+        stop.setPrefWidth(realRecWidth * closeSize);
+        stop.setPrefHeight(maxObjectHeight);
         stop.setId("gameButton3");
-        GridPane.setRowIndex(stop, y + 1);
-        GridPane.setColumnIndex(stop, buttonsPosition + (buttonSize * 2));
+        stop.setAlignment(Pos.CENTER);
+        stop.setCursor(Cursor.HAND);
+        GridPane.setRowIndex(stop, 0);
+        GridPane.setColumnIndex(stop, x - closeSize);
         GridPane.setColumnSpan(stop, closeSize);
         grid.getChildren().addAll(stop);
+
+        if(x > (buttonSize * 2 + closeSize)) {
+            int spaceSize = x - buttonSize * 2 - closeSize;
+
+            Label space = new Label("");
+            space.setPrefWidth(realRecWidth * spaceSize);
+            space.setPrefHeight(maxObjectHeight);
+            space.setStyle("-fx-background-color:#FFFFFF; -fx-border-color: #999999;");
+            GridPane.setRowIndex(space, 0);
+            GridPane.setColumnIndex(space, buttonSize * 2);
+            GridPane.setColumnSpan(space, spaceSize);
+            grid.getChildren().addAll(space);
+        }
 
         Scene scene = new Scene(grid, fullWidth, fullHeight);
 
@@ -140,7 +149,8 @@ public class PlayGame {
         playStage.setTitle("Moving horse game ["+columns+" x "+rows+"]");
         playStage.getIcons().add(new Image("file:src/files/icon.png"));
         playStage.setScene(scene);
-        //playStage.setResizable(false);
+        playStage.setResizable(false);
+        // grid.setGridLinesVisible(true);
 
         playStage.show();
     }
