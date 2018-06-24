@@ -1,6 +1,8 @@
 package game;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -13,31 +15,44 @@ public class FieldsGenerator {
 
     public FieldsGenerator(int x, int y) {
 
-        this.x = x;
-        this.y = y;
-
-        GridPane grid = new GridPane();
-        Color[] colors = {Color.web("0xFFFFFF"), Color.web("0xCCCCCC")};
-
-        for(int row=0;row<x;++row) {
-            for(int col=0;col<y;++col) {
-
-                if((row & 1) == (col & 1)) {
-                    ClNr = 0;
-                } else {
-                    ClNr = 1;
-                }
-
-                Rectangle rec = new Rectangle();
-                rec.setWidth(30);
-                rec.setHeight(30);
-                rec.setFill(colors[ClNr]);
-                GridPane.setRowIndex(rec, row);
-                GridPane.setColumnIndex(rec, col);
-                grid.getChildren().addAll(rec);
-
-            }
-        }
+//        this.x = x;
+//        this.y = y;
+//
+//        GridPane grid = new GridPane();
+//        grid.setAlignment(Pos.CENTER);
+//
+//        Color[] colors = {Color.web("0xFFFFFF"), Color.web("0xCCCCCC")};
+//
+//        for(int row=0;row<x;++row) {
+//            for(int col=0;col<y;++col) {
+//
+//                if((row & 1) == (col & 1)) {
+//                    ClNr = 0;
+//                } else {
+//                    ClNr = 1;
+//                }
+//
+//                Rectangle rec = new Rectangle();
+//                rec.setWidth(Menu.objectWidht);
+//                rec.setHeight(Menu.objectHeight);
+//                rec.setFill(colors[ClNr]);
+//                GridPane.setRowIndex(rec, row);
+//                GridPane.setColumnIndex(rec, col);
+//                grid.getChildren().addAll(rec);
+//
+//            }
+//        }
+//
+//        Scene scene = new Scene(grid, x * Menu.objectWidht, (y+1) * Menu.objectHeight);
+//
+//        grid.getStylesheets().add("file:src/files/styles.css");
+//
+//        grid.setTitle("Moving horse game");
+//        grid.getIcons().add(new Image("file:src/files/icon.png"));
+//        grid.setScene(scene);
+//        grid.setResizable(false);
+//
+//        grid.show();
     }
 
 }
