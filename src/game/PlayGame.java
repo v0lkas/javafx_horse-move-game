@@ -1,14 +1,19 @@
 package game;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 import static game.Menu.maxObjectWidht;
 import static game.Menu.maxObjectHeight;
@@ -18,6 +23,11 @@ public class PlayGame {
     private int x;
     private int y;
     private int ClNr;
+
+    public int total = x * y;
+    public int actual = 0;
+    public ArrayList list = new ArrayList();
+    public ArrayList boxes = new ArrayList();
 
     int realRecWidth;
     int realRecHeight;
@@ -64,14 +74,7 @@ public class PlayGame {
                     ClNr = 1;
                 }
 
-                Label rec = new Label(String.valueOf(" "));
-                rec.setStyle("-fx-background-color:"+colors[ClNr]+"; -fx-font:12px 'Courier-New';");
-                rec.setPrefWidth(realRecWidth);
-                rec.setPrefHeight(realRecHeight);
-                rec.setAlignment(Pos.CENTER);
-                rec.setCursor(Cursor.HAND);
-                GridPane.setRowIndex(rec, col+1);
-                GridPane.setColumnIndex(rec, row);
+                Box rec = new Box(colors[ClNr],realRecWidth,realRecHeight,col,row);
                 grid.getChildren().addAll(rec);
 
             }
@@ -94,7 +97,7 @@ public class PlayGame {
             closeText = "Close";
         }
 
-        Label undo = new Label(String.valueOf("< undo"));
+        Label undo = new Label("< undo");
         undo.setPrefWidth(realRecWidth * buttonSize);
         undo.setPrefHeight(maxObjectHeight);
         undo.setId("gameButton1");
@@ -105,7 +108,7 @@ public class PlayGame {
         GridPane.setColumnSpan(undo, buttonSize);
         grid.getChildren().addAll(undo);
 
-        Label redo = new Label(String.valueOf(" redo >"));
+        Label redo = new Label(" redo >");
         redo.setPrefWidth(realRecWidth * buttonSize);
         redo.setPrefHeight(maxObjectHeight);
         redo.setId("gameButton2");
@@ -116,7 +119,7 @@ public class PlayGame {
         GridPane.setColumnSpan(redo, buttonSize);
         grid.getChildren().addAll(redo);
 
-        Label stop = new Label(String.valueOf(closeText));
+        Label stop = new Label(closeText);
         stop.setPrefWidth(realRecWidth * closeSize);
         stop.setPrefHeight(maxObjectHeight);
         stop.setId("gameButton3");
