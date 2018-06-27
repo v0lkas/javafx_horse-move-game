@@ -1,39 +1,37 @@
 package game;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static game.Menu.maxObjectWidht;
 import static game.Menu.maxObjectHeight;
 
 public class PlayGame {
 
-    private int x;
-    private int y;
+    public static int x;
+    public static int y;
     private int ClNr;
 
     public int total = x * y;
-    public int actual = 0;
-    public ArrayList list = new ArrayList();
-    public ArrayList boxes = new ArrayList();
+    public static int selected_actual = 0;
+    public static int selected_max = 0;
+    public static Map<Integer,String> moves = new HashMap<Integer,String>();
+    public static Map<String,Box> boxes = new HashMap<String,Box>();
 
     int realRecWidth;
     int realRecHeight;
     int buttonSize;
     int closeSize;
-    int buttonsPosition;
     String closeText;
 
     public PlayGame(int level,int columns,int rows) {
@@ -75,6 +73,9 @@ public class PlayGame {
                 }
 
                 Box rec = new Box(colors[ClNr],realRecWidth,realRecHeight,col,row);
+
+                boxes.put(col+"_"+row,rec);
+
                 grid.getChildren().addAll(rec);
 
             }

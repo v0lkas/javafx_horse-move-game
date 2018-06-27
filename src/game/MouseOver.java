@@ -1,12 +1,24 @@
 package game;
 
-import javax.lang.model.element.Element;
+import javafx.scene.Cursor;
+
+import static game.PlayGame.*;
 
 public class MouseOver {
 
-    public MouseOver(int col,int row, Box box) {
+    public MouseOver(int col,int row) {
 
-        box.setText("cafs");
+        Box box = boxes.get(col+"_"+row);
+
+        if(new Permissions().checkBox(col,row) == true) {
+
+
+
+        } else {
+
+
+
+        }
 
     }
 

@@ -10,8 +10,6 @@ import javafx.scene.layout.GridPane;
 
 public class Box extends Label {
 
-    public Box box;
-
     public Box (String color, int width, int height, int col, int row) {
 
         setStyle("-fx-background-color:"+color+"; -fx-font:12px 'Courier-New';");
@@ -20,40 +18,29 @@ public class Box extends Label {
         setPrefHeight(height);
         setAlignment(Pos.CENTER);
         setCursor(Cursor.HAND);
-        setId("box"+col+"x"+row);
         GridPane.setRowIndex(this, col+1);
         GridPane.setColumnIndex(this, row);
 
         setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                new MouseOver(col,row, box);
+                new MouseOver(col,row);
             }
         });
 
         setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                // mouse out
+                new MouseOut(col,row);
             }
         });
 
         setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                setText("AHOJ");
+                new BoxClick(col,row);
             }
         });
-
-        this.box = this;
     }
 
-}
-
-class maclass implements  EventHandler {
-
-    @Override
-    public void handle(Event event) {
-
-    }
 }
