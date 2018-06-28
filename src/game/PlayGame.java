@@ -173,19 +173,28 @@ public class PlayGame {
                 alert.setHeaderText("What do yuo want to do?");
                 alert.setContentText(null);
 
+                ButtonType restart = new ButtonType("Restart");
                 ButtonType back = new ButtonType("Back to menu");
                 ButtonType close = new ButtonType("Close game");
                 ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-                alert.getButtonTypes().setAll(back, close, cancel);
+                alert.getButtonTypes().setAll(restart, back, close, cancel);
 
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == back) {
 
-                    Menu.launch();
+                if (result.get() != cancel) {
 
-                } else if (result.get() == close) {
                     playStage.close();
+
+                    selected_actual = 0;
+                    selected_max = 0;
+
+                    if (result.get() == back) {
+                        new Menu().start(new Stage());
+                    } else if (result.get() == restart) {
+                        new PlayGame(level,columns,rows);
+                    }
+
                 }
             }
         });

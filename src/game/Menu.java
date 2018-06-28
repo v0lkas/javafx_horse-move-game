@@ -54,10 +54,9 @@ public class Menu extends Application {
         }
     }
 
+
     @Override
     public void start(Stage stage) {
-
-//        new PlayGame(1,15,15);
 
         GridPane menuWindow = new GridPane();
         menuWindow.setAlignment(Pos.CENTER);
