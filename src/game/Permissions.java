@@ -85,10 +85,22 @@ public class Permissions {
             return false;
         }
 
-        ArrayList posMoves = calculateMoves(col,row);
 
-        if((selected_actual == 0 && (col == 0 || col == x-1) && (row == 0 || row == y-1)) || (posMoves.contains(col+"_"+row))) {
+        if(selected_actual == 0 && (col == 0 || col == x-1) && (row == 0 || row == y-1)) {
             return true;
+        } else if (selected_actual > 0) {
+
+            String last = moves.get(selected_actual);
+            String[] actual = last.split("_");
+
+            System.out.println(actual[0] +" x "+ actual[1]);
+
+//            ArrayList posMoves = calculateMoves();
+
+//            System.out.println(posMoves);
+
+            return true;
+
         } else {
             return false;
         }

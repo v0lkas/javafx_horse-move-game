@@ -1,6 +1,5 @@
 package game;
 
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -38,7 +37,7 @@ public class Box extends Label {
         setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                new BoxClick(col,row);
+                new MouseClick(col,row);
             }
         });
     }

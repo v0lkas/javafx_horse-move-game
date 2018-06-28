@@ -1,17 +1,23 @@
 package game;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static game.Menu.maxObjectWidht;
 import static game.Menu.maxObjectHeight;
@@ -98,6 +104,34 @@ public class PlayGame {
             closeText = "Close";
         }
 
+
+
+
+
+
+
+
+        Scene scene = new Scene(grid, fullWidth, fullHeight);
+
+        grid.getStylesheets().add("file:src/files/styles.css");
+
+        Stage playStage = new Stage();
+
+        playStage.setTitle("Moving horse game ["+columns+" x "+rows+"]");
+        playStage.getIcons().add(new Image("file:src/files/icon.png"));
+        playStage.setScene(scene);
+        playStage.setResizable(false);
+        // grid.setGridLinesVisible(true);
+
+        playStage.show();
+        
+        
+        
+        
+        
+        
+        
+        
         Label undo = new Label("< undo");
         undo.setPrefWidth(realRecWidth * buttonSize);
         undo.setPrefHeight(maxObjectHeight);
@@ -131,6 +165,33 @@ public class PlayGame {
         GridPane.setColumnSpan(stop, closeSize);
         grid.getChildren().addAll(stop);
 
+        stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Choose closing option");
+                alert.setHeaderText("What do yuo want to do?");
+                alert.setContentText(null);
+
+                ButtonType back = new ButtonType("Back to menu");
+                ButtonType close = new ButtonType("Close game");
+                ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                alert.getButtonTypes().setAll(back, close, cancel);
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == back) {
+
+                    Menu.launch();
+
+                } else if (result.get() == close) {
+                    playStage.close();
+                }
+            }
+        });
+
+
+
         if(x > (buttonSize * 2 + closeSize)) {
             int spaceSize = x - buttonSize * 2 - closeSize;
 
@@ -143,19 +204,5 @@ public class PlayGame {
             GridPane.setColumnSpan(space, spaceSize);
             grid.getChildren().addAll(space);
         }
-
-        Scene scene = new Scene(grid, fullWidth, fullHeight);
-
-        grid.getStylesheets().add("file:src/files/styles.css");
-
-        Stage playStage = new Stage();
-
-        playStage.setTitle("Moving horse game ["+columns+" x "+rows+"]");
-        playStage.getIcons().add(new Image("file:src/files/icon.png"));
-        playStage.setScene(scene);
-        playStage.setResizable(false);
-        // grid.setGridLinesVisible(true);
-
-        playStage.show();
     }
 }
