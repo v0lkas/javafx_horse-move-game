@@ -10,9 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f33abd1f-513a-4899-b61b-7ea1289515a7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/PlayGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PlayGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/MouseClick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/MouseClick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/MouseOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/MouseOver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Permissions.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -36,7 +36,7 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
+            <state relative-caret-position="-238">
               <caret line="166" column="30" selection-start-line="166" selection-start-column="24" selection-end-line="166" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -48,8 +48,8 @@
       <file leaf-file-name="Box.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/Box.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="178">
+              <caret line="18" column="30" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#747#748#0" expanded="true" />
@@ -59,15 +59,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayGame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/PlayGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="199" column="10" selection-start-line="199" selection-start-column="10" selection-end-line="199" selection-end-column="10" />
+            <state relative-caret-position="552">
+              <caret line="201" lean-forward="true" selection-start-line="201" selection-end-line="201" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#694#710#0" expanded="true" />
-                <element signature="e#767#779#0" expanded="true" />
+                <element signature="e#907#923#0" expanded="true" />
+                <element signature="e#980#992#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,8 +76,8 @@
       <file leaf-file-name="Permissions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/Permissions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1358">
-              <caret line="95" column="57" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
+            <state relative-caret-position="144">
+              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,8 +88,8 @@
       <file leaf-file-name="MouseClick.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/MouseClick.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="93">
+              <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,8 +100,8 @@
       <file leaf-file-name="MouseOver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/MouseOver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,7 +109,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MouseOut.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MouseOut.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/game/MouseOut.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -191,13 +191,13 @@
         <option value="$PROJECT_DIR$/src/game/CheckPermissions.java" />
         <option value="$PROJECT_DIR$/src/game/PossibleMoves.java" />
         <option value="$PROJECT_DIR$/src/game/BoxClick.java" />
+        <option value="$PROJECT_DIR$/src/game/MouseOut.java" />
+        <option value="$PROJECT_DIR$/src/game/Menu.java" />
+        <option value="$PROJECT_DIR$/src/game/PlayGame.java" />
+        <option value="$PROJECT_DIR$/src/game/Permissions.java" />
         <option value="$PROJECT_DIR$/src/game/Box.java" />
         <option value="$PROJECT_DIR$/src/game/MouseClick.java" />
         <option value="$PROJECT_DIR$/src/game/MouseOver.java" />
-        <option value="$PROJECT_DIR$/src/game/MouseOut.java" />
-        <option value="$PROJECT_DIR$/src/game/Permissions.java" />
-        <option value="$PROJECT_DIR$/src/game/Menu.java" />
-        <option value="$PROJECT_DIR$/src/game/PlayGame.java" />
       </list>
     </option>
   </component>
@@ -214,6 +214,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -244,7 +245,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -413,7 +413,6 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14427084" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -425,6 +424,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -575,10 +575,61 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/PossibleMoves.java" />
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="166" column="30" selection-start-line="166" selection-start-column="24" selection-end-line="166" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Permissions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/PlayGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="201" lean-forward="true" selection-start-line="201" selection-end-line="201" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#907#923#0" expanded="true" />
+            <element signature="e#980#992#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Box.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#747#748#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/MouseClick.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="93">
+          <caret line="19" column="45" lean-forward="true" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -587,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/MouseOver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -601,57 +652,6 @@
           <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Box.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#747#748#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="166" column="30" selection-start-line="166" selection-start-column="24" selection-end-line="166" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Permissions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1358">
-          <caret line="95" column="57" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/PlayGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="199" column="10" selection-start-line="199" selection-start-column="10" selection-end-line="199" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#694#710#0" expanded="true" />
-            <element signature="e#767#779#0" expanded="true" />
           </folding>
         </state>
       </provider>

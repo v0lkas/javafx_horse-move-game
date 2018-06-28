@@ -12,11 +12,7 @@ public class MouseOver {
 
         if(new Permissions().checkBox(col,row) == true) {
 
-
-
         } else {
-
-
 
         }
 

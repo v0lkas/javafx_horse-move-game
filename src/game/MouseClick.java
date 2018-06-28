@@ -1,5 +1,6 @@
 package game;
 
+import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.image.Image;
 
@@ -25,8 +26,22 @@ public class MouseClick {
             Image notAllowed = new Image("file:src/files/not-allowed.png");
             box.setCursor(new ImageCursor(notAllowed));
 
+            setTimeout(() -> box.setCursor(Cursor.HAND), 100);
+
         }
 
+    }
+
+    public static void setTimeout(Runnable runnable, int delay){
+        new Thread(() -> {
+            try {
+                Thread.sleep(delay);
+                runnable.run();
+            }
+            catch (Exception e){
+                System.err.println(e);
+            }
+        }).start();
     }
 
 }

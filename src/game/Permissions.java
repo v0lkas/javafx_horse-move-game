@@ -93,13 +93,19 @@ public class Permissions {
             String last = moves.get(selected_actual);
             String[] actual = last.split("_");
 
-            System.out.println(actual[0] +" x "+ actual[1]);
+            int tmpCol = Integer.parseInt(actual[0]);
+            int tmpRow = Integer.parseInt(actual[1]);
 
-//            ArrayList posMoves = calculateMoves();
+            ArrayList posMoves = calculateMoves(tmpCol,tmpRow);
 
-//            System.out.println(posMoves);
+            for(Object tmpMove : posMoves) {
 
-            return true;
+                if(tmpMove.equals(col+"_"+row)) {
+                    return true;
+                }
+            }
+
+            return false;
 
         } else {
             return false;
