@@ -13,7 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,8 +34,9 @@ public class PlayGame {
 
     public static Stage playStage = new Stage();
     public static String[] colors = {"#FFFFFF","#DDDDDD"};
-    public static Label undo = new Label("< undo");;
-    public static Label redo = new Label("redo >");;
+    public static Label undo = new Label("< undo");
+    public static Label redo = new Label("redo >");
+    public static Label space = new Label("");
 
     private int ClNr;
 
@@ -45,6 +45,7 @@ public class PlayGame {
     int buttonSize;
     int closeSize;
     String closeText;
+    String spaceText;
 
     public PlayGame() {};
 
@@ -136,7 +137,7 @@ public class PlayGame {
 
         grid.getStylesheets().add("file:src/files/styles.css");
 
-        playStage.setTitle("Moving horse game ["+columns+" x "+rows+"]");
+        playStage.setTitle("Horse move game ["+columns+" x "+rows+"]");
         playStage.getIcons().add(new Image("file:src/files/icon.png"));
         playStage.setScene(scene);
         playStage.setResizable(false);
@@ -211,10 +212,14 @@ public class PlayGame {
         if(x > (buttonSize * 2 + closeSize)) {
             int spaceSize = x - buttonSize * 2 - closeSize;
 
-            Label space = new Label("");
+            if(spaceSize >= 2) {
+                space.setText("0 / "+total);
+            }
+
             space.setPrefWidth(realRecWidth * spaceSize);
             space.setPrefHeight(maxObjectHeight);
-            space.setStyle("-fx-background-color:#FFFFFF; -fx-border-color: #999999;");
+            space.setAlignment(Pos.CENTER);
+            space.setStyle("-fx-background-color:#FFFFFF; -fx-border-color: #999999; -fx-font-weight: bold;");
             GridPane.setRowIndex(space, 0);
             GridPane.setColumnIndex(space, buttonSize * 2);
             GridPane.setColumnSpan(space, spaceSize);

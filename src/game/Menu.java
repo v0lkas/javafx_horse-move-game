@@ -7,8 +7,10 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -197,6 +199,25 @@ public class Menu extends Application {
         Text bttmText = new Text("{ about & rules }");
         bttmText.setId("bottom-text");
         bttmText.setFill(Color.GRAY);
+        bttmText.setCursor(Cursor.HAND);
+        bttmText.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                bttmText.setFill(Color.BLACK);
+            }
+        });
+        bttmText.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                bttmText.setFill(Color.GRAY);
+            }
+        });
+        bttmText.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                new About().about();
+            }
+        });
         GridPane.setHalignment(bttmText, HPos.RIGHT);
 
 
@@ -227,7 +248,7 @@ public class Menu extends Application {
 
         scene.getStylesheets().add("file:src/files/styles.css");
 
-        stage.setTitle("Moving horse game");
+        stage.setTitle("Horse move game");
         stage.getIcons().add(new Image("file:src/files/icon.png"));
         stage.setScene(scene);
         stage.setResizable(false);

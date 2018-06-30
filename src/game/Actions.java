@@ -36,6 +36,9 @@ public class Actions {
             selected_actual = 0;
             selected_max = 0;
 
+            undo.setStyle("-fx-background-color:#EEEEEE;");
+            redo.setStyle("-fx-background-color:#EEEEEE;");
+
             if (result.get() == back) {
                 new Menu().start(new Stage());
             } else if (result.get() == restart) {
@@ -81,6 +84,10 @@ public class Actions {
         }
         redo.setStyle("-fx-background-color:#CCCCCC;");
         redo.setTextFill(Color.BLACK);
+
+        if(space.getText() != "") {
+            space.setText(selected_actual+" / "+total);
+        }
     }
 
     public void redo() {
@@ -115,6 +122,10 @@ public class Actions {
             }
             undo.setStyle("-fx-background-color:#CCCCCC;");
             undo.setTextFill(Color.BLACK);
+
+            if(space.getText() != "") {
+                space.setText(selected_actual+" / "+total);
+            }
         }
     }
 

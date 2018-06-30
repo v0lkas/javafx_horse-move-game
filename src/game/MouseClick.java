@@ -26,6 +26,15 @@ public class MouseClick {
 
             ArrayList nextMoves = new Permissions().calculateMoves(col,row);
 
+            undo.setStyle("-fx-background-color:#CCCCCC;");
+            undo.setTextFill(Color.BLACK);
+            redo.setStyle("-fx-background-color:#EEEEEE;");
+            redo.setTextFill(Color.WHITE);
+
+            if(space.getText() != "") {
+                space.setText(selected_actual+" / "+total);
+            }
+
             if (selected_actual == total) {
 
                 new GameOver().gameWonAlert();
@@ -39,11 +48,6 @@ public class MouseClick {
                 new Levels().level1(nextMoves);
 
             }
-
-            undo.setStyle("-fx-background-color:#CCCCCC;");
-            undo.setTextFill(Color.BLACK);
-            redo.setStyle("-fx-background-color:#EEEEEE;");
-            redo.setTextFill(Color.WHITE);
 
         } else {
 

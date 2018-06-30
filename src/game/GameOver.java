@@ -72,15 +72,4 @@ public class GameOver {
 
     }
 
-//    alert.setDialogPane(new FixedOrderButtonDialog());
-//
-//    private static class FixedOrderButtonDialog extends DialogPane {
-//        @Override
-//        protected Node createButtonBar() {
-//            ButtonBar node = (ButtonBar) super.createButtonBar();
-//            node.setButtonOrder(ButtonBar.BUTTON_ORDER_NONE);
-//            return node;
-//        }
-//    }
-
 }
