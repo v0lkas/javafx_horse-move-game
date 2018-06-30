@@ -5,19 +5,17 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import static game.Menu.maxObjectWidht;
 import static game.Menu.maxObjectHeight;
@@ -26,13 +24,21 @@ public class PlayGame {
 
     public static int x;
     public static int y;
-    private int ClNr;
+    public static int lvl;
+    public static int total;
+    public static String fontSize;
 
-    public int total = x * y;
     public static int selected_actual = 0;
     public static int selected_max = 0;
     public static Map<Integer,String> moves = new HashMap<Integer,String>();
     public static Map<String,Box> boxes = new HashMap<String,Box>();
+
+    public static Stage playStage = new Stage();
+    public static String[] colors = {"#FFFFFF","#DDDDDD"};
+    public static Label undo = new Label("< undo");;
+    public static Label redo = new Label("redo >");;
+
+    private int ClNr;
 
     int realRecWidth;
     int realRecHeight;
@@ -40,10 +46,14 @@ public class PlayGame {
     int closeSize;
     String closeText;
 
+    public PlayGame() {};
+
     public PlayGame(int level,int columns,int rows) {
 
         this.x = columns;
         this.y = rows;
+        this.lvl = level;
+        this.total = x * y;
 
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 
@@ -63,20 +73,31 @@ public class PlayGame {
             realRecHeight = realRecWidth;
         }
 
+        if (realRecWidth < 33) {
+            fontSize = "12px";
+        } else if (realRecWidth < 36) {
+            fontSize = "13px";
+        } else if (realRecWidth < 36) {
+            fontSize = "13px";
+        } else if (realRecWidth < 39) {
+            fontSize = "14px";
+        } else if (realRecWidth < 42) {
+            fontSize = "15px";
+        } else if (realRecWidth < 45) {
+            fontSize = "16px";
+        } else if (realRecWidth < 48) {
+            fontSize = "17px";
+        } else {
+            fontSize = "18px";
+        }
+
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
-
-        //Color[] colors = {Color.web("0xFFFFFF"), Color.web("0xDDDDDD")};
-        String[] colors = {"#FFFFFF","#DDDDDD"};
 
         for(int row=0;row<x;++row) {
             for(int col=0;col<y;++col) {
 
-                if((row & 1) == (col & 1)) {
-                    ClNr = 0;
-                } else {
-                    ClNr = 1;
-                }
+                ClNr = boxCalc(row,col);
 
                 Box rec = new Box(colors[ClNr],realRecWidth,realRecHeight,col,row);
 
@@ -115,8 +136,6 @@ public class PlayGame {
 
         grid.getStylesheets().add("file:src/files/styles.css");
 
-        Stage playStage = new Stage();
-
         playStage.setTitle("Moving horse game ["+columns+" x "+rows+"]");
         playStage.getIcons().add(new Image("file:src/files/icon.png"));
         playStage.setScene(scene);
@@ -132,27 +151,42 @@ public class PlayGame {
         
         
         
-        Label undo = new Label("< undo");
+
         undo.setPrefWidth(realRecWidth * buttonSize);
         undo.setPrefHeight(maxObjectHeight);
         undo.setId("gameButton1");
         undo.setAlignment(Pos.CENTER);
         undo.setCursor(Cursor.HAND);
+        undo.setTextFill(Color.WHITE);
         GridPane.setRowIndex(undo,0);
         GridPane.setColumnIndex(undo, 0);
         GridPane.setColumnSpan(undo, buttonSize);
         grid.getChildren().addAll(undo);
 
-        Label redo = new Label(" redo >");
+        undo.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                new Actions().undo();
+            }
+        });
+
         redo.setPrefWidth(realRecWidth * buttonSize);
         redo.setPrefHeight(maxObjectHeight);
         redo.setId("gameButton2");
         redo.setAlignment(Pos.CENTER);
         redo.setCursor(Cursor.HAND);
+        redo.setTextFill(Color.WHITE);
         GridPane.setRowIndex(redo, 0);
         GridPane.setColumnIndex(redo, buttonSize);
         GridPane.setColumnSpan(redo, buttonSize);
         grid.getChildren().addAll(redo);
+
+        redo.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                new Actions().redo();
+            }
+        });
 
         Label stop = new Label(closeText);
         stop.setPrefWidth(realRecWidth * closeSize);
@@ -168,34 +202,7 @@ public class PlayGame {
         stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Choose closing option");
-                alert.setHeaderText("What do yuo want to do?");
-                alert.setContentText(null);
-
-                ButtonType restart = new ButtonType("Restart");
-                ButtonType back = new ButtonType("Back to menu");
-                ButtonType close = new ButtonType("Close game");
-                ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-                alert.getButtonTypes().setAll(restart, back, close, cancel);
-
-                Optional<ButtonType> result = alert.showAndWait();
-
-                if (result.get() != cancel) {
-
-                    playStage.close();
-
-                    selected_actual = 0;
-                    selected_max = 0;
-
-                    if (result.get() == back) {
-                        new Menu().start(new Stage());
-                    } else if (result.get() == restart) {
-                        new PlayGame(level,columns,rows);
-                    }
-
-                }
+                new Actions().closeAlert();
             }
         });
 
@@ -212,6 +219,19 @@ public class PlayGame {
             GridPane.setColumnIndex(space, buttonSize * 2);
             GridPane.setColumnSpan(space, spaceSize);
             grid.getChildren().addAll(space);
+        }
+
+        if(lvl > 0) {
+            new Actions().angles();
+        }
+    }
+
+    public int boxCalc(int row, int col) {
+
+        if((row & 1) == (col & 1)) {
+            return 0;
+        } else {
+            return 1;
         }
     }
 }

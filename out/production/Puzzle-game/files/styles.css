@@ -32,7 +32,11 @@
 }
 
 #gameButton1, #gameButton2, #gameButton3 {
-    -fx-background-color:#CCCCCC;
+    -fx-background-color:#EEEEEE;
     -fx-font:14px 'Courier-New';
     -fx-border-color: #999999;
+}
+
+#gameButton3 {
+    -fx-background-color:#CCCCCC;
 }

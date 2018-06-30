@@ -7,11 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import static game.PlayGame.*;
+
 public class Box extends Label {
 
     public Box (String color, int width, int height, int col, int row) {
 
-        setStyle("-fx-background-color:"+color+"; -fx-font:12px 'Courier-New';");
+        setStyle("-fx-background-color:"+color+"; -fx-font:"+fontSize+" 'Courier-New';");
 
         setPrefWidth(width);
         setPrefHeight(height);
@@ -23,14 +25,14 @@ public class Box extends Label {
         setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                new MouseOver(col,row);
+                new MouseMove("on",col,row);
             }
         });
 
         setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                new MouseOut(col,row);
+                new MouseMove("off",col,row);
             }
         });
 
