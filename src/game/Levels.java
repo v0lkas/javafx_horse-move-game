@@ -16,10 +16,12 @@ public class Levels {
 
                 Box box = boxes.get(col+"_"+row);
 
-                ClNr = new PlayGame().boxCalc(row,col);
+                if(box.getText() == "") {
 
-                box.setStyle("-fx-background-color:"+colors[ClNr]+"; -fx-font:"+fontSize+" 'Courier-New';");
+                    ClNr = new PlayGame().boxCalc(row, col);
 
+                    box.setStyle("-fx-background-color:" + colors[ClNr] + "; -fx-font:" + fontSize + " 'Courier-New';");
+                }
             }
         }
 

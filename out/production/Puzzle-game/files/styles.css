@@ -7,7 +7,8 @@
 }
 
 #grid {
-    -fx-background-image: url('file:src/files/bg.png');
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
 }
 
 #help, #size, #custom {

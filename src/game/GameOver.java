@@ -9,7 +9,7 @@ import static game.PlayGame.*;
 
 public class GameOver {
 
-    public void gameOverAlert() {
+    public void gameOverAlert() throws Exception {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
@@ -36,14 +36,14 @@ public class GameOver {
             if (result.get() == backToMenu) {
                 new Menu().start(new Stage());
             } else if (result.get() == restartGame) {
-                new PlayGame(lvl,x,y);
+                new PlayGame(lvl,x,y,thematics);
             }
 
         }
 
     }
 
-    public void gameWonAlert() {
+    public void gameWonAlert() throws Exception {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
@@ -67,7 +67,7 @@ public class GameOver {
         if (result.get() == backToMenu) {
             new Menu().start(new Stage());
         } else if (result.get() == restartGame) {
-            new PlayGame(lvl,x,y);
+            new PlayGame(lvl,x,y,thematics);
         }
 
     }

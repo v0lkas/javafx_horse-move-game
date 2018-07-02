@@ -13,7 +13,7 @@ import static game.PlayGame.*;
 
 public class Actions {
 
-    public void closeAlert() {
+    public void closeAlert() throws Exception {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Close alert!");
@@ -42,7 +42,7 @@ public class Actions {
             if (result.get() == back) {
                 new Menu().start(new Stage());
             } else if (result.get() == restart) {
-                new PlayGame(lvl, x, y);
+                new PlayGame(lvl, x, y,thematics);
             }
         }
     }
@@ -55,6 +55,15 @@ public class Actions {
 
             Box box = boxes.get(last);
             box.setText("");
+
+            String[] token0 = String.valueOf(last).split("_");
+            int row0 = Integer.parseInt(token0[1]);
+            int col0 = Integer.parseInt(token0[0]);
+
+            int ClNr = new PlayGame().boxCalc(row0,col0);
+            box.setStyle("-fx-background-color:"+colors[ClNr]+"; -fx-font:"+fontSize+" 'Courier-New';");
+
+
 
             --selected_actual;
 
@@ -99,7 +108,9 @@ public class Actions {
             String last = moves.get(selected_actual);
 
             Box box = boxes.get(last);
-            box.setText(String.valueOf(selected_actual));
+            // box.setText(String.valueOf(selected_actual));
+            box.setText(" ");
+            box.setStyle("-fx-background:transparent;");
 
             if (lvl > 0) {
 

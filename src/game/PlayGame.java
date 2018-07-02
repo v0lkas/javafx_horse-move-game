@@ -13,8 +13,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import static game.Menu.maxObjectWidht;
 import static game.Menu.maxObjectHeight;
@@ -26,6 +28,7 @@ public class PlayGame {
     public static int lvl;
     public static int total;
     public static String fontSize;
+    public static String thematics;
 
     public static int selected_actual = 0;
     public static int selected_max = 0;
@@ -44,17 +47,19 @@ public class PlayGame {
     int realRecHeight;
     int buttonSize;
     int closeSize;
+    int bgWidth;
+    int bgHeight;
     String closeText;
-    String spaceText;
 
     public PlayGame() {};
 
-    public PlayGame(int level,int columns,int rows) {
+    public PlayGame(int level,int columns,int rows, String thematics) throws Exception {
 
         this.x = columns;
         this.y = rows;
         this.lvl = level;
         this.total = x * y;
+        this.thematics = thematics;
 
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 
@@ -135,13 +140,48 @@ public class PlayGame {
 
         Scene scene = new Scene(grid, fullWidth, fullHeight);
 
+        try {
+
+            ArrayList background = new WebReader().webImage(fullWidth, fullHeight);
+
+            bgWidth = fullWidth;
+            int bgProportion = (int) background.get(0);
+            double bgHeightTmp = (double) bgWidth / bgProportion * 100;
+            bgHeight = (int) bgHeightTmp;
+
+            if(bgWidth < fullWidth || bgHeight < fullHeight) {
+                bgHeight = fullHeight;
+                double bgWidthTmp = (double) bgHeight / 100 * bgProportion;
+                bgWidth = (int) bgWidthTmp;
+            }
+
+            grid.setStyle("-fx-background-image: url(\""+background.get(3)+"\"); -fx-background-size: "+bgWidth+" "+bgHeight+";");
+
+        } catch (Exception e) {
+
+            Random rand = new Random();
+            int imgNr = rand.nextInt(10) + 1;
+
+            if(fullWidth >= fullHeight) {
+                bgWidth = fullWidth;
+                bgHeight = fullWidth;
+            } else {
+                bgWidth = fullHeight;
+                bgHeight = fullHeight;
+            }
+
+            grid.setStyle("-fx-background-image:url('file:src/images/"+thematics+"/"+imgNr+".jpg'); -fx-background-size: "+bgWidth+" "+bgHeight+";");
+
+        }
+
         grid.getStylesheets().add("file:src/files/styles.css");
+        grid.setId("grid");
 
         playStage.setTitle("Horse move game ["+columns+" x "+rows+"]");
         playStage.getIcons().add(new Image("file:src/files/icon.png"));
+
         playStage.setScene(scene);
         playStage.setResizable(false);
-        // grid.setGridLinesVisible(true);
 
         playStage.show();
         
@@ -203,7 +243,11 @@ public class PlayGame {
         stop.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                new Actions().closeAlert();
+                try {
+                    new Actions().closeAlert();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         });
 
@@ -219,7 +263,8 @@ public class PlayGame {
             space.setPrefWidth(realRecWidth * spaceSize);
             space.setPrefHeight(maxObjectHeight);
             space.setAlignment(Pos.CENTER);
-            space.setStyle("-fx-background-color:#FFFFFF; -fx-border-color: #999999; -fx-font-weight: bold;");
+            //space.setStyle("-fx-background-color:#FFFFFF; -fx-border-color: #999999; -fx-font-weight: bold;");
+            space.setStyle("-fx-font-weight: bold;");
             GridPane.setRowIndex(space, 0);
             GridPane.setColumnIndex(space, buttonSize * 2);
             GridPane.setColumnSpan(space, spaceSize);

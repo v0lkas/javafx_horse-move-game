@@ -11,7 +11,7 @@ import static game.PlayGame.*;
 
 public class MouseClick {
 
-    public MouseClick(int col, int row) {
+    public MouseClick(int col, int row) throws Exception {
 
         Box box = boxes.get(col+"_"+row);
 
@@ -20,7 +20,9 @@ public class MouseClick {
             ++selected_actual;                      // maximize selection
             selected_max = selected_actual;         // set max selection
 
-            box.setText(""+ selected_actual);       // set number inside the box
+            //box.setText(""+ selected_actual);     // set number inside the box
+            box.setText(" ");                       // set blank text inside the box
+            box.setStyle("-fx-background:transparent;");     // set box to transparent
 
             moves.put(selected_actual,col+"_"+row); // set moves counter
 

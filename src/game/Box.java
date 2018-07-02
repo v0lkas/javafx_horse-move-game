@@ -14,6 +14,7 @@ public class Box extends Label {
     public Box (String color, int width, int height, int col, int row) {
 
         setStyle("-fx-background-color:"+color+"; -fx-font:"+fontSize+" 'Courier-New';");
+//        setStyle("-fx-font:"+fontSize+" 'Courier-New';");
 
         setPrefWidth(width);
         setPrefHeight(height);
@@ -39,7 +40,11 @@ public class Box extends Label {
         setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                new MouseClick(col,row);
+                try {
+                    new MouseClick(col,row);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }
