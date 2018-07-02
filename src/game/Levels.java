@@ -28,7 +28,7 @@ public class Levels {
         for(Object tmpMove : posMoves) {
 
             Box box = boxes.get(tmpMove);
-            box.setStyle("-fx-background-color:#d6ff00; -fx-font:"+fontSize+" 'Courier-New';");
+            box.setStyle("-fx-background-color:#3669d2; -fx-font:"+fontSize+" 'Courier-New';");
 
         }
 
@@ -41,7 +41,7 @@ public class Levels {
             Box box = boxes.get(tmpMove);
 
             if(type.equals("on")) {
-                thisColor = "#9999ff";
+                thisColor = "#64b4fe";
             } else {
 
                 String[] token = String.valueOf(tmpMove).split("_");

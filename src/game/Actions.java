@@ -3,7 +3,6 @@ package game;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -36,8 +35,8 @@ public class Actions {
             selected_actual = 0;
             selected_max = 0;
 
-            undo.setStyle("-fx-background-color:#EEEEEE;");
-            redo.setStyle("-fx-background-color:#EEEEEE;");
+            undo.setStyle("-fx-background-image:url('file:src/files/undo-off.png');");
+            redo.setStyle("-fx-background-image:url('file:src/files/redo-off.png');");
 
             if (result.get() == back) {
                 new Menu().start(new Stage());
@@ -85,14 +84,16 @@ public class Actions {
         }
 
         if(selected_actual == 0) {
-            undo.setStyle("-fx-background-color:#EEEEEE;");
-            undo.setTextFill(Color.WHITE);
+            undo.setStyle("-fx-background-image:url('file:src/files/undo-off.png');");
         } else {
-            undo.setStyle("-fx-background-color:#CCCCCC;");
-            undo.setTextFill(Color.BLACK);
+            undo.setStyle("-fx-background-image:url('file:src/files/undo.png');");
         }
-        redo.setStyle("-fx-background-color:#CCCCCC;");
-        redo.setTextFill(Color.BLACK);
+
+        if(selected_max == 0) {
+            redo.setStyle("-fx-background-image:url('file:src/files/redo-off.png');");
+        } else {
+            redo.setStyle("-fx-background-image:url('file:src/files/redo.png');");
+        }
 
         if(space.getText() != "") {
             space.setText(selected_actual+" / "+total);
@@ -125,14 +126,11 @@ public class Actions {
             }
 
             if(selected_actual == selected_max) {
-                redo.setStyle("-fx-background-color:#EEEEEE;");
-                redo.setTextFill(Color.WHITE);
+                redo.setStyle("-fx-background-image:url('file:src/files/redo-off.png');");
             } else {
-                redo.setStyle("-fx-background-color:#CCCCCC;");
-                redo.setTextFill(Color.BLACK);
+                redo.setStyle("-fx-background-image:url('file:src/files/redo.png');");
             }
-            undo.setStyle("-fx-background-color:#CCCCCC;");
-            undo.setTextFill(Color.BLACK);
+            undo.setStyle("-fx-background-image:url('file:src/files/undo.png');");
 
             if(space.getText() != "") {
                 space.setText(selected_actual+" / "+total);

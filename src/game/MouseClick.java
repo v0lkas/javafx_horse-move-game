@@ -3,7 +3,6 @@ package game;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -20,7 +19,6 @@ public class MouseClick {
             ++selected_actual;                      // maximize selection
             selected_max = selected_actual;         // set max selection
 
-            //box.setText(""+ selected_actual);     // set number inside the box
             box.setText(" ");                       // set blank text inside the box
             box.setStyle("-fx-background:transparent;");     // set box to transparent
 
@@ -28,10 +26,8 @@ public class MouseClick {
 
             ArrayList nextMoves = new Permissions().calculateMoves(col,row);
 
-            undo.setStyle("-fx-background-color:#CCCCCC;");
-            undo.setTextFill(Color.BLACK);
-            redo.setStyle("-fx-background-color:#EEEEEE;");
-            redo.setTextFill(Color.WHITE);
+            undo.setStyle("-fx-background-image:url('file:src/files/undo.png');");
+            redo.setStyle("-fx-background-image:url('file:src/files/redo-off.png');");
 
             if(space.getText() != "") {
                 space.setText(selected_actual+" / "+total);
@@ -53,10 +49,16 @@ public class MouseClick {
 
         } else {
 
-            Image notAllowed = new Image("file:src/files/not-allowed.png");
-            box.setCursor(new ImageCursor(notAllowed));
+            box.setStyle("-fx-background-color:#ff0000; -fx-font:"+fontSize+" 'Courier-New';");
 
-            setTimeout(() -> box.setCursor(Cursor.HAND), 100);  // set cursor "not-allowed" for 0.1 second
+            if(box.getText() == " ") {
+                setTimeout(() -> box.setStyle("-fx-background-color:transparent; -fx-font:"+fontSize+" 'Courier-New';"), 100);
+            } else {
+
+                int ClNr = new PlayGame().boxCalc(row,col);
+
+                setTimeout(() -> box.setStyle("-fx-background-color:"+colors[ClNr]+"; -fx-font:"+fontSize+" 'Courier-New';"), 100);
+            }
 
         }
 

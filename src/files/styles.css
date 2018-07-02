@@ -33,11 +33,13 @@
 }
 
 #gameButton1, #gameButton2, #gameButton3 {
-    -fx-background-color:#EEEEEE;
     -fx-font:14px 'Courier-New';
-    -fx-border-color: #999999;
+    -fx-background-size: 40 38;
+    -fx-background-position: center center;
+    -fx-background-repeat: stretch;
 }
 
 #gameButton3 {
-    -fx-background-color:#CCCCCC;
+    -fx-background-size: 38 38;
+    -fx-background-image:url('file:src/files/close.png');
 }

@@ -37,8 +37,8 @@ public class PlayGame {
 
     public static Stage playStage = new Stage();
     public static String[] colors = {"#FFFFFF","#DDDDDD"};
-    public static Label undo = new Label("< undo");
-    public static Label redo = new Label("redo >");
+    public static Label undo = new Label("");
+    public static Label redo = new Label("");
     public static Label space = new Label("");
 
     private int ClNr;
@@ -125,10 +125,8 @@ public class PlayGame {
 
         if(x < buttonSize * 3) {
             closeSize = 1;
-            closeText = "(X)";
         } else {
             closeSize = buttonSize;
-            closeText = "Close";
         }
 
 
@@ -199,6 +197,7 @@ public class PlayGame {
         undo.setAlignment(Pos.CENTER);
         undo.setCursor(Cursor.HAND);
         undo.setTextFill(Color.WHITE);
+        undo.setStyle("-fx-background-image:url('file:src/files/undo-off.png');");
         GridPane.setRowIndex(undo,0);
         GridPane.setColumnIndex(undo, 0);
         GridPane.setColumnSpan(undo, buttonSize);
@@ -217,6 +216,7 @@ public class PlayGame {
         redo.setAlignment(Pos.CENTER);
         redo.setCursor(Cursor.HAND);
         redo.setTextFill(Color.WHITE);
+        redo.setStyle("-fx-background-image:url('file:src/files/redo-off.png');");
         GridPane.setRowIndex(redo, 0);
         GridPane.setColumnIndex(redo, buttonSize);
         GridPane.setColumnSpan(redo, buttonSize);
@@ -229,7 +229,7 @@ public class PlayGame {
             }
         });
 
-        Label stop = new Label(closeText);
+        Label stop = new Label("");
         stop.setPrefWidth(realRecWidth * closeSize);
         stop.setPrefHeight(maxObjectHeight);
         stop.setId("gameButton3");
@@ -263,7 +263,7 @@ public class PlayGame {
             space.setPrefWidth(realRecWidth * spaceSize);
             space.setPrefHeight(maxObjectHeight);
             space.setAlignment(Pos.CENTER);
-            //space.setStyle("-fx-background-color:#FFFFFF; -fx-border-color: #999999; -fx-font-weight: bold;");
+            // space.setStyle("-fx-background-color:#FFFFFF; -fx-border-color: #999999; -fx-font-weight: bold;");
             space.setStyle("-fx-font-weight: bold;");
             GridPane.setRowIndex(space, 0);
             GridPane.setColumnIndex(space, buttonSize * 2);
