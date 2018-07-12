@@ -1,9 +1,5 @@
 package game;
 
-import javafx.scene.Cursor;
-import javafx.scene.ImageCursor;
-import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 
 import static game.PlayGame.*;

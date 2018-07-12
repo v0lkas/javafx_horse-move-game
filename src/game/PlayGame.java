@@ -263,7 +263,6 @@ public class PlayGame {
             space.setPrefWidth(realRecWidth * spaceSize);
             space.setPrefHeight(maxObjectHeight);
             space.setAlignment(Pos.CENTER);
-            // space.setStyle("-fx-background-color:#FFFFFF; -fx-border-color: #999999; -fx-font-weight: bold;");
             space.setStyle("-fx-font-weight: bold;");
             GridPane.setRowIndex(space, 0);
             GridPane.setColumnIndex(space, buttonSize * 2);

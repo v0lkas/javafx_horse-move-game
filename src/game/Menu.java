@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
 import java.util.Optional;
-import java.util.Random;
 
 import static java.lang.Short.valueOf;
 
